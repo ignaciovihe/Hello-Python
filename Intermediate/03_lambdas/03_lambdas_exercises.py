@@ -57,3 +57,25 @@ print()
 price_with_tax = lambda price : price * 1.21
 print(price_with_tax(80))
 print()
+
+
+# EJEMPLO DE CLOSURES USANDO LAMBDAS
+
+def make_checker(condition, value):
+    if condition == "greater":
+        return lambda x: x > value
+    elif condition == "less":
+        return lambda x: x < value
+    elif condition == "divisible":
+        return lambda x: x % value == 0
+    else:
+        return lambda x: True  # por defecto, siempre cierto
+
+# Creamos funciones dinámicas en tiempo de ejecución:
+greater_than_10 = make_checker("greater", 10)
+less_than_5 = make_checker("less", 5)
+divisible_by_3 = make_checker("divisible", 3)
+
+print(greater_than_10(12))  # True
+print(less_than_5(7))       # False
+print(divisible_by_3(9))    # True
